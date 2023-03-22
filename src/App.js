@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import MoodAnalytics from "./components/MoodAnalytics";
+import Navbar from "./components/Navbar";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 function App() {
+  const [data,setData] = useState([]);
+  useEffect(()=>{
+   axios.get('http://api.reward-dragon.com:8000/customers/customer-josh-reason-today/?user_profile=500',{
+      headers:{
+        Authorization:'c3fb04334a7c647338cdfd500e2997bb9898cf52'
+      }
+    }).then((res)=>{
+      setData(res.data.moodalytics);
+    }).catch((err)=>console.log(err,'err'))
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <MoodAnalytics pdata={data} />
+    </>
   );
 }
 

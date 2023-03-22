@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 12vh;
+    margin: auto;
+}
+
+.text-heading{
+    border: 1px solid gray;
+    width: 90%;
+    height: 12vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
